@@ -4,7 +4,7 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="C:\Microsoft\Xamarin\NuGet\xamarin.forms\4.2.0.709249\build\Xamarin.Forms.targets" Condition="Exists('C:\Microsoft\Xamarin\NuGet\xamarin.forms\4.2.0.709249\build\Xamarin.Forms.targets')" />
-    <Import Project="$(NuGetPackageRoot)entityframework\6.4.0-preview3-19553-01\buildTransitive\EntityFramework.targets" Condition="Exists('$(NuGetPackageRoot)entityframework\6.4.0-preview3-19553-01\buildTransitive\EntityFramework.targets')" />
+    <Import Project="$(NuGetPackageRoot)xamarin.forms\4.2.0.709249\build\Xamarin.Forms.targets" Condition="Exists('$(NuGetPackageRoot)xamarin.forms\4.2.0.709249\build\Xamarin.Forms.targets')" />
+    <Import Project="$(NuGetPackageRoot)entityframework\6.4.0\buildTransitive\EntityFramework.targets" Condition="Exists('$(NuGetPackageRoot)entityframework\6.4.0\buildTransitive\EntityFramework.targets')" />
   </ImportGroup>
 </Project>

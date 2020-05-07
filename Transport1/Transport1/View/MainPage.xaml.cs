@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Transport1.client;
 
 namespace Transport1
 {
@@ -17,20 +18,19 @@ namespace Transport1
         readonly Button toCommonPageBtn;
         readonly Button toModalPageBtn;
         readonly Button toHistoryPageBtn;
+        ServiceModel serviceModel = new ServiceModel();
+        public User user = new User();
         public MainPage()
         {
 
-
-
-             
-                Title = "Главная";
-                toCommonPageBtn = new Button
+            Title = "Главная";
+            toCommonPageBtn = new Button
                 {
-
+                
                     HorizontalOptions = LayoutOptions.End,
                     VerticalOptions = LayoutOptions.End
                 };
-                toCommonPageBtn.Clicked += ToCommonPage;
+                toCommonPageBtn.Clicked += GetOneUser;
                 toHistoryPageBtn = new Button
                 {
                     Text = "История поездок"
@@ -38,7 +38,7 @@ namespace Transport1
                 toHistoryPageBtn.Clicked += ToHistoryPage;
             toModalPageBtn = new Button
             {
-                Text = "Подключенные карты",
+                Text = user.Email,
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.End
             };
@@ -69,6 +69,10 @@ namespace Transport1
         private async void ToCommonPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CommonPage());
+        }
+        public async void GetOneUser(object sender, EventArgs e)
+        {
+            user = await serviceModel.Zalupa();
         }
         protected override void OnAppearing()
         {

@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+option csharp_namespace = "Transport1";
+
+package Greet;
+
+// The greeting service definition.
+service TransportService {
+  // Sends a greeting
+  rpc AddUser (User) returns (Response);
+  rpc AddDriver (Driver) returns (Response);
+  rpc AddBus (Bus) returns (Response);
+  rpc AddRoute (Route) returns (Response);
+  rpc AddHistory (History) returns (Response);
+  
+  rpc GetRouteList (RouteRequest) returns (stream Route);
+  rpc GetHistoryList (HistoryRequest) returns (stream History);
+
+  rpc GetOneOfUser (UserRequest) returns (User);
+
+  rpc UpdateUser (User) returns (Response);
+  rpc UpdateDriver (Driver) returns (Response);
+}
+
+message User {
+	int32 id_user = 1;
+	string Name = 2;
+	string SecondName = 3;
+	string Phone = 4;
+	string Email = 5;
+	string Card = 6;
+}
+
+message UserRequest {
+	int32 id_user = 1;
+}
+
+message Driver {
+	int32 id_driver = 1;
+	string Name = 2;
+	string SecondName = 3;
+	string MidleName = 4;
+	string Phone = 5; 
+	string Card = 6;
+}
+
+message Bus {
+	int32 id_bus = 1;
+	string Bus = 2;
+}
+
+message Route{
+	int32 id_route = 1;
+	string Route = 2;
+}
+
+message History{
+	int32 id_history = 1;
+	int32 id_user = 2;
+	int32 cash = 3;
+	int32 id_driver = 4;
+}
+message HistoryRequest{
+	int32 id_history = 1;
+}
+
+message RouteRequest{
+	int32 id_route = 1;
+}
+
+enum Changes{
+		Unknown = 0;
+		ADD_OK = 1;
+		ADD_FAILED = 2;
+		UPDATE_OK = 3;
+		UPDATE_FAILED = 4;
+}
+
+message Response {
+	Changes Modification_Response = 1;
+}

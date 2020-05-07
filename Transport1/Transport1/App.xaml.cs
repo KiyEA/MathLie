@@ -1,6 +1,5 @@
 ﻿
 using System;
-using Transport1.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,9 +10,8 @@ namespace Transport1
         public App()
         {
             InitializeComponent();
-
-            //  MainPage = new NavigationPage(new MainPage());
-            MainPage = new RegisterPage();
+    
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
